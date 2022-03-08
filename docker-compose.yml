@@ -8,19 +8,19 @@ services:
       SA_PASSWORD: "Matech123"
       ACCEPT_EULA: "Y"
     ports:
-      - "21433:1433"
+      - "1433:1433"
     restart: unless-stopped
     networks:
       - webnet
 
   webapi:
-    image: ${DOCKER_REGISTRY-}webapi
+    image: appdictionaryapi.azurecr.io/webapi1
     build:
       context: .
-      dockerfile: src/Apps/api-dictionary.Api/Dockerfile
+      dockerfile: src/Apps/api_dictionary.Api/Dockerfile
     ports:
       #- "5006:443"
-      - "5005:80"
+      - "80:80"
     environment:
       #- ASPNETCORE_ENVIRONMENT=Development
       #- ASPNETCORE_URLS=https://+:443;http://+:80
