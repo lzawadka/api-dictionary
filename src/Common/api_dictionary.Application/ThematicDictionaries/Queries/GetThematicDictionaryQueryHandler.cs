@@ -18,7 +18,7 @@ public class GetThematicDictionaryQueryHandler : IRequestHandler<GetThematicDict
         _context = context;
     }
 
-    public async Task<ServiceResult<List<ListOfTranslationByThematicDictionary>>> Handle(GetThematicDictionaryQuery request, CancellationToken cancellationToken)
+    public Task<ServiceResult<List<ListOfTranslationByThematicDictionary>>> Handle(GetThematicDictionaryQuery request, CancellationToken cancellationToken)
     {
         List<ListOfTranslationByThematicDictionary> listOfTranslationByDictionaryThematic = _context
             .ThematicDictionaryTranslations
@@ -36,6 +36,6 @@ public class GetThematicDictionaryQueryHandler : IRequestHandler<GetThematicDict
             })
             .ToList();
 
-        return ServiceResult.Success(listOfTranslationByDictionaryThematic);
+        return Task.FromResult(ServiceResult.Success(listOfTranslationByDictionaryThematic));
     }
 }

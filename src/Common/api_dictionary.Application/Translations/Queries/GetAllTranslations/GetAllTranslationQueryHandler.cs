@@ -22,13 +22,13 @@ public class GetAllTranslationQueryHandler : IRequestHandler<GetAllTranslationQu
         _mapper = mapper;
     }
 
-    public async Task<ServiceResult<List<GetAllTransLationQueryResponse>>> Handle(GetAllTranslationQuery request, CancellationToken cancellationToken)
+    public Task<ServiceResult<List<GetAllTransLationQueryResponse>>> Handle(GetAllTranslationQuery request, CancellationToken cancellationToken)
     {
         List<GetAllTransLationQueryResponse> allTranslationsList = new List<GetAllTransLationQueryResponse>();
         foreach(var translation in _context.Translations.ToList())
         {
             allTranslationsList.Add(_mapper.Map<GetAllTransLationQueryResponse>(translation));
         }
-        return ServiceResult.Success(allTranslationsList);
+        return Task.FromResult(ServiceResult.Success(allTranslationsList));
     }
 }
