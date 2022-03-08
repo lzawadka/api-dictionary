@@ -14,7 +14,7 @@ COPY ["src/Common/api_dictionary.Application/api_dictionary.Application.csproj",
 COPY ["src/Common/api_dictionary.Domain/api_dictionary.Domain.csproj", "src/Common/api_dictionary.Api.Domain/"]
 RUN dotnet restore "src/Apps/api_dictionary.Api/api_dictionary.Api.csproj"
 COPY . .
-WORKDIR "/src/src/Apps/api_dictionary.Api"
+WORKDIR "src/Apps/api_dictionary.Api"
 RUN dotnet build "api_dictionary.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
