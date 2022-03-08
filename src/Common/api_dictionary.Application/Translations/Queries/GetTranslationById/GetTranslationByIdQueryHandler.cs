@@ -22,7 +22,7 @@ public class GetTranslationByIdQueryHandler : IRequestHandler<GetTranslationById
         _mapper = mapper;
     }
 
-    public async Task<ServiceResult<GetTranslationByIdQueryResponse>> Handle(GetTranslationByIdQuery request, CancellationToken cancellationToken)
+    public Task<ServiceResult<GetTranslationByIdQueryResponse>> Handle(GetTranslationByIdQuery request, CancellationToken cancellationToken)
     {
         var translationById = _mapper
             .Map<GetTranslationByIdQueryResponse>(_context
@@ -31,6 +31,6 @@ public class GetTranslationByIdQueryHandler : IRequestHandler<GetTranslationById
                 .FirstOrDefault(o => o.Id == request.TranslationId)
             );
 
-        return ServiceResult.Success(translationById);
+        return Task.FromResult(ServiceResult.Success(translationById));
     }
 }
