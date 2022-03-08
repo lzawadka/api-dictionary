@@ -23,11 +23,11 @@ public class ThematicDictionaryController : BaseApiController
     /// <summary>
     /// Get List of Translations by ThematicDictionaryId 
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id">thematicDictionaryId</param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    public async Task<ServiceResult<List<ListOfTranslationByThematicDictionary>>> Get(int thematicDictionaryId)
+    public async Task<ServiceResult<List<ListOfTranslationByThematicDictionary>>> Get(int id)
     {
-        return await Mediator.Send(new GetThematicDictionaryQuery { ThematicDictionaryId = thematicDictionaryId });
+        return await Mediator.Send(new GetThematicDictionaryQuery { ThematicDictionaryId = id });
     }
 }

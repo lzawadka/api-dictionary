@@ -35,7 +35,7 @@ public class CreateThematicDictionaryCommandHandler : IRequestHandler<CreateThem
                 _context.ThematicDictionaries.Add(entity);
                 await _context.SaveChangesAsync(cancellationToken);
 
-                thematicDictionaryIds.Add(thematicDictionary.Id);
+                thematicDictionaryIds.Add(entity.Id);
             }
         }
 

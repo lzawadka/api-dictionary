@@ -10,7 +10,9 @@ namespace api_dictionary.Application.Common.Interfaces
 
         Task<ApplicationUserDto> CheckUserPassword(string userName, string password);
 
-        Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password);
+        Task<(Result Result, string UserId)> CreateUserAsync(string firstName, string lastName, string email, string password);
+
+        Task<bool> IsUserEmailExistAsync(string userId);
 
         Task<bool> UserIsInRole(string userId, string role);
 

@@ -45,12 +45,21 @@ namespace api_dictionary.Infrastructure.Identity
             return null;
         }
 
-        public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password)
+        public async Task<bool> IsUserEmailExistAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            return user != null;
+        }
+
+        public async Task<(Result Result, string UserId)> CreateUserAsync(string firstName, string lastName, string email, string password)
         {
             var user = new ApplicationUser
             {
-                UserName = userName,
-                Email = userName,
+                Name = firstName,
+                LastName = lastName,
+                Email = email,
+                UserName = email
             };
 
             var result = await _userManager.CreateAsync(user, password);
